@@ -2,24 +2,34 @@
 
 <%= link_to "Add Player", new_player_path %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @players.each do |player| %>
+<% if @players.empty? %>
+  <div class="empty-state">
+    <p>No Players created yet.</p>
+  </div>
+<% else %>
+  <table>
+    <thead>
       <tr>
-        <td><%= player.name %></td>
-        <td>
-          <%= link_to "View", player %> |
-          <%= link_to "Delete", player,
-              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-        </td>
+        <th>Name</th>
+        <th>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @players.each do |player| %>
+        <tr>
+          <td><%= player.name %></td>
+          <td>
+            <%= link_to "View", player %> |
+            <%= link_to "Delete", player,
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= paginate @players %>
+<% end %>

@@ -2,24 +2,34 @@
 
 <%= link_to "Record Match", new_match_path, class: "button" %>
 
-<br></br>
+<br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Winner</th>
-      <th>Loser</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @matches.each do |match| %>
+<% if @matches.empty? %>
+  <div class="empty-state">
+    <p>No matches recorded yet.</p>
+  </div>
+<% else %>
+  <table>
+    <thead>
       <tr>
-        <td><strong><%= match.winner.name %></strong></td>
-        <td><%= match.loser.name %></td>
-        <td><%= match.created_at.strftime("%d %b %Y") %></td>
+        <th>Winner</th>
+        <th>Loser</th>
+        <th>Date</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @matches.each do |match| %>
+        <tr>
+          <td><strong><%= match.winner.name %></strong></td>
+          <td><%= match.loser.name %></td>
+          <td><%= match.created_at.strftime("%d %b %Y") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= paginate @matches %>
+<% end %>

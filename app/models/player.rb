@@ -11,14 +11,6 @@ class Player < ApplicationRecord
            foreign_key: :loser_id,
            dependent: :restrict_with_error
 
-  def wins_count
-    wins.size
-  end
-
-  def losses_count
-    losses.size
-  end
-
   def matches_count
     wins_count + losses_count
   end

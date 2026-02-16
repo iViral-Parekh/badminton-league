@@ -4,6 +4,7 @@ class MatchesController < ApplicationController
   def index
     @matches = Match.includes(:winner, :loser)
                     .order(created_at: :desc)
+                    .page(params[:page])
   end
 
   def new

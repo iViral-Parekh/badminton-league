@@ -2,7 +2,7 @@ class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :destroy]
 
   def index
-    @players = Player.order(:name)
+    @players = Player.order(:name).page(params[:page])
   end
 
   def show

@@ -1,5 +1,5 @@
 class LeaderboardController < ApplicationController
   def index
-    @players = LeaderboardQuery.call
+    @players = LeaderboardQuery.call.page(params[:page])
   end
 end
