@@ -18,4 +18,16 @@ class Player < ApplicationRecord
        (SELECT COUNT(*) FROM matches WHERE loser_id = players.id) AS losses_count"
     )
   }
+
+  def wins_count
+    wins.size
+  end
+
+  def losses_count
+    losses.size
+  end
+
+  def matches_count
+    wins_count + losses_count
+  end
 end

@@ -2,16 +2,25 @@
 
 <%= link_to "Add Player", new_player_path %>
 
-<ul>
-  <% @players.each do |player| %>
-    <li>
-      <%= link_to player.name, player_path(player) %>
-      |
-      <%= link_to "Delete", player_path(player),
-          method: :delete,
-          data: { confirm: "Are you sure?" } %>
-    </li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
 
-<%= link_to "Back to Home", root_path %>
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= player.name %></td>
+        <td>
+          <%= link_to "View", player %> |
+          <%= link_to "Delete", player,
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
