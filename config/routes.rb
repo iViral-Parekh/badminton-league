@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   resources :players, only: [:index, :show, :new, :create, :destroy]
   resources :matches, only: [:index, :new, :create]
+
+  get "leaderboard", to: "leaderboard#index"
 end

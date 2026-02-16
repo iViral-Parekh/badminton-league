@@ -10,4 +10,12 @@ class Player < ApplicationRecord
            class_name: 'Match',
            foreign_key: :loser_id,
            dependent: :destroy
+
+  scope :with_stats, lambda {
+    select(
+      "players.*,
+       (SELECT COUNT(*) FROM matches WHERE winner_id = players.id) AS wins_count,
+       (SELECT COUNT(*) FROM matches WHERE loser_id = players.id) AS losses_count"
+    )
+  }
 end
