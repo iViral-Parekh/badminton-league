@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
-  resources :players, only: [:index, :show, :new, :create, :destroy]
-  resources :matches, only: [:index, :new, :create]
+  resources :players, only: [ :index, :show, :new, :create, :destroy ]
+  resources :matches, only: [ :index, :new, :create ]
 
   get "leaderboard", to: "leaderboard#index"
 end

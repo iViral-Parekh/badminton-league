@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :load_players, only: [:new, :create]
+  before_action :load_players, only: [ :new, :create ]
 
   def index
     @matches = Match.includes(:winner, :loser)
@@ -11,13 +11,12 @@ class MatchesController < ApplicationController
   end
 
   def create
-    @match = Match.new(match_params)
+    MatchRecorder.call(match_params)
 
-    if @match.save
-      redirect_to matches_path, notice: "Match recorded successfully."
-    else
-      render :new, status: :unprocessable_entity
-    end
+    redirect_to matches_path, notice: "Match recorded successfully."
+  rescue ActiveRecord::RecordInvalid => e
+    @match = e.record
+    render :new, status: :unprocessable_entity
   end
 
   private
