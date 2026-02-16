@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -14,4 +13,5 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :players, only: [:index, :show, :new, :create, :destroy]
+  resources :matches, only: [:index, :new, :create]
 end

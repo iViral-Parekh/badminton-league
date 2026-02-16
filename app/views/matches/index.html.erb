@@ -1,0 +1,16 @@
+<h2>Matches</h2>
+
+<%= link_to "Record New Match", new_match_path %>
+
+<ul>
+  <% @matches.each do |match| %>
+    <li>
+      <strong><%= match.winner.name %></strong>
+      defeated
+      <%= match.loser.name %>
+      (<%= match.created_at.strftime("%Y-%m-%d %H:%M") %>)
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to Home", root_path %>
