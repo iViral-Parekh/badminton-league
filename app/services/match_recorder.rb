@@ -11,8 +11,6 @@ class MatchRecorder
   end
 
   def call
-    return { success: false, error: "Winner and loser cannot be same" } if winner_id == loser_id
-
     Match.transaction do
       create_match
     end
