@@ -14,6 +14,10 @@ body {
   background-color: #f4f6f8;
 }
 
+div {
+  padding: 10px;
+}
+
 .navbar {
   background-color: #1e293b;
   color: white;
@@ -40,12 +44,14 @@ body {
 }
 
 table {
+  padding: 10px;
   border-collapse: collapse;
   width: 100%;
   background: white;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
   text-align: left;

@@ -23,8 +23,11 @@ class PlayersController < ApplicationController
   end
 
   def destroy
-    @player.destroy
-    redirect_to players_path, notice: "Player deleted successfully."
+    if @player.destroy
+      redirect_to players_path, notice: "Player deleted successfully."
+    else
+      redirect_to players_path, alert: @player.errors.full_messages.join(", ")
+    end
   end
 
   private
