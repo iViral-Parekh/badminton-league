@@ -1,0 +1,17 @@
+<h2>Players</h2>
+
+<%= link_to "Add Player", new_player_path %>
+
+<ul>
+  <% @players.each do |player| %>
+    <li>
+      <%= link_to player.name, player_path(player) %>
+      |
+      <%= link_to "Delete", player_path(player),
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to Home", root_path %>

@@ -1,0 +1,27 @@
+<h2>Add New Player</h2>
+
+<%= form_with model: @player do |form| %>
+
+  <% if @player.errors.any? %>
+    <div>
+      <h4>Errors:</h4>
+      <ul>
+        <% @player.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Player" %>
+  </div>
+
+<% end %>
+
+<%= link_to "Back", players_path %>
